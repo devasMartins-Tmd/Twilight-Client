@@ -46,14 +46,14 @@ export function LikeNComment({
    let { commentMod, setCommentMod } = useContext(CommentContext);
 
    return (
-      <div className='flex flex-row items-center w-full justify-start my-2' data-user={userId} data-post={id}>
+      <div className='flex flex-row items-center w-full justify-center my-2' data-user={userId} data-post={id}>
          {[
             { i: isLiked ? 'favorite' : 'favorite_border', val: likes },
             { i: 'chat_bubble', val: comment ? comment.length : 0 },
          ].map(({ i, val }, index) => {
             return (
                <div
-                  className={`${mode ? 'bg-[#2b2b2b]' : 'bg-gray-100'} p-1 px-3 rounded-lg flex justify-center mr-5`}
+                  className={`${mode ? 'bg-[#2b2b2b]' : 'bg-gray-100'} w-full p-1 px-2 rounded-full flex justify-center mx-1`}
                   onClick={() => {
                      if (index === 0) {
                         likeMutation.mutate({ id });
@@ -64,13 +64,15 @@ export function LikeNComment({
                      }
                   }}
                >
-                  <div className='flex justify-center cursor-pointer self-center' key={index}>
+                  <div className='flex flex-row justify-center cursor-pointer self-center w-full' key={index}>
                      <i
-                        className={`${mode ? 'text-[hsl(0,0%,70%)]' : 'text-[hsl(0,0%,20%)]'} text-2xl material-icons-outlined text-center`}
+                        className={`${mode ? 'text-[hsl(0,0%,80%)]' : 'text-[hsl(0,0%,10%)]'} text-2xl material-icons-outlined text-center`}
                      >
                         {i}
                      </i>
-                     <span className={`${mode ? 'text-slate-100' : 'text-[#191919]'} text-base text-center ml-0.5 self-center font-medium`}>
+                     <span
+                        className={`${mode ? 'text-slate-100' : 'text-[#191919]'} text-[15px] text-center ml-0.5 self-center font-medium`}
+                     >
                         {val}
                      </span>
                   </div>

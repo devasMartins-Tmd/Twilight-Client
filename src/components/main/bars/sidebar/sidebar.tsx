@@ -68,21 +68,33 @@ const Sidebar = () => {
                />
             </div>
             <div className='flex flex-col justify-center w-full'>
-               <p className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} text-sm font-play font-medium text-center`}>
+               <p className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} text-base font-russ font-medium text-center`}>
                   {data?.user.name}
                </p>
-               <small className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} font-play font-medium text-center`}>User</small>
+               <small className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} font-russ font-medium text-center`}>User</small>
             </div>
             <section className='flex flex-col items-start w-full mt-10'>
-               <LeftPart arr={leftPartition} setPage={setPage} isdark={isdark} />
-               <RightPart arr={rightPartition} setPage={setPage} isdark={isdark} />
+               <LeftPart arr={leftPartition} setPage={setPage} isdark={isdark} flag={flag} setflag={setflag} />
+               <RightPart arr={rightPartition} setPage={setPage} isdark={isdark} flag={flag} setflag={setflag} />
             </section>
          </section>
       </section>
    );
 };
 
-function RightPart({ arr, setPage, isdark }: { arr: any[]; setPage: Function; isdark: boolean }) {
+function RightPart({
+   arr,
+   setPage,
+   isdark,
+   setflag,
+   flag,
+}: {
+   arr: any[];
+   setPage: Function;
+   setflag: Function;
+   flag: boolean;
+   isdark: boolean;
+}) {
    return (
       <>
          {arr?.map((item, index) => {
@@ -91,11 +103,14 @@ function RightPart({ arr, setPage, isdark }: { arr: any[]; setPage: Function; is
                   className='flex flex-row items-center w-full justify-between mb-5
                 hover:bg-transparent hover:bg-opacity-50 px-5 py-1 cursor-pointer'
                   key={index + 1}
-                  onClick={() => setPage(item?.index)}
+                  onClick={() => {
+                     setPage(item?.index);
+                     setflag(!flag);
+                  }}
                >
                   <div className='flex flex-row items-center'>
                      <i className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} material-icons-outlined text-xl mr-5`}>{item?.icon}</i>
-                     <span className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} text-base font-play font-medium`}>{item?.name}</span>
+                     <span className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} text-sm font-russ font-medium`}>{item?.name}</span>
                   </div>
                   <div className={`flex justify-center ${item?.name === 'Dark mode' ? '' : 'hidden'}`}>
                      <Switch />
@@ -107,7 +122,19 @@ function RightPart({ arr, setPage, isdark }: { arr: any[]; setPage: Function; is
    );
 }
 
-function LeftPart({ arr, setPage, isdark }: { arr: any[]; setPage: Function; isdark: boolean }) {
+function LeftPart({
+   arr,
+   setPage,
+   isdark,
+   setflag,
+   flag,
+}: {
+   arr: any[];
+   setPage: Function;
+   isdark: boolean;
+   setflag: Function;
+   flag: boolean;
+}) {
    return (
       <>
          {arr.map((item, index) => {
@@ -116,11 +143,14 @@ function LeftPart({ arr, setPage, isdark }: { arr: any[]; setPage: Function; isd
                   className={`flex flex-row items-center w-full justify-between mb-5
                 hover:bg- hover:bg-opacity-50 px-5 py-1 cursor-pointer`}
                   key={index + 1}
-                  onClick={() => (item?.name !== 'Dark mode' ? setPage(item?.index) : console.log('Icon'))}
+                  onClick={() => {
+                     item?.name !== 'Dark mode' ? setPage(item?.index) : console.log('Icon');
+                     setflag(!flag);
+                  }}
                >
                   <div className='flex flex-row items-center'>
                      <i className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} material-icons-outlined text-xl mr-5`}>{item?.icon}</i>
-                     <span className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} text-base font-play font-medium`}>{item?.name}</span>
+                     <span className={`${isdark ? 'text-[#FAFAF9]' : 'text-[#111111]'} text-sm font-russ font-medium`}>{item?.name}</span>
                   </div>
                   <div className={`flex justify-center ${item?.name === 'Dark mode' ? '' : 'hidden'}`}>
                      <Switch />

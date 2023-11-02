@@ -64,7 +64,7 @@ export default function PostTemplate({
    });
 
    useEffect(() => {
-      if (status === 'success') setshow(true);
+      if (status === 'success') setshow(true), console.log(data);
    }, [status]);
 
    let Exp: string = useMemo(() => {
@@ -95,40 +95,38 @@ export default function PostTemplate({
                userProfileImg={userProfile}
             />
 
-            <div className='w-full flex justify-start my-0.5 ml-5 max-h-[30%] overflow-scroll' id={'post_scroll'}>
-               <p className={`${mode ? 'text-slate-100' : 'text-[#191919]'} text-sm text-left font-play font-medium h-auto`}>{text}</p>
+            <div className='w-full flex justify-start h-auto' id={'post_scroll'}>
+               <p className={`${mode ? 'text-slate-100' : 'text-[#191919]'} text-base text-left font-kan h-auto`}>{text}</p>
             </div>
 
-            <div className={`w-full max-h-[450px] ${img ? 'min-h-[300px]' : ''} overflow-scroll`}>
+            <div className={`w-full max-h-[450px] ${img ? 'min-h-[250px]' : ''} overflow-scroll`}>
                {img ? <img src={img} className={`object-cover w-full h-full rounded shadow`} alt='post_image' /> : <></>}
             </div>
 
             <LikeNComment mode={mode} likes={likes} comment={comment} userId={userId} id={id} query={query} isLiked={isLiked} />
             <div
-               className={`flex flex-col w-full gap-4 shadow-inner justify-center ${mode ? 'bg-[#181717]' : ''} mb-2 ${
-                  show && commentMod === id ? 'w-full flex min-h-[250px] sticky top-0 overflow-scroll' : 'hidden'
+               className={`flex flex-col w-full gap-4 shadow-inner justify-center p-2 ${mode ? 'bg-[#181717]' : ''} mb-2 ${
+                  show && commentMod === id ? 'w-full flex min-h-[200px] sticky top-0 overflow-scroll' : 'hidden'
                }`}
             >
                {data && data.comments.length > 0 ? (
                   (console.log(data.comments),
                   data.comments.map((item: any, index: number) => {
                      return (
-                        <div className='flex flex-row items-start w-full p-2 px-4' key={index}>
-                           {/* <div className={`${mode ? 'border-green-200' : 'border-black'} w-10 h-10 rounded-full shadow border`}></div>
-                            */}
+                        <div className='flex flex-row items-start w-full self-start mb-3' key={index}>
                            <img src={item.profileImg ?? Exp} className='w-12 h-12 rounded-full shadow object-cover' alt={item.name} />
-                           <div className={`flex flex-col items-start ml-4 p-3 rounded-lg ${mode ? 'bg-[#2b2b2b]' : 'bg-gray-100'}`}>
+                           <div className={`flex flex-col items-start ml-4 p-2 rounded-lg ${mode ? 'bg-[#2b2b2b]' : 'bg-gray-100'}`}>
                               <p
                                  className={`${
                                     mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'
-                                 } font-play text-sm text-left font-semibold`}
+                                 } font-russ text-sm text-left font-semibold`}
                               >
                                  {item.name}
                               </p>
                               <p
                                  className={`${
                                     mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,10%)]'
-                                 } font-play text-base text-left font-medium`}
+                                 } font-kan text-base text-left font-medium`}
                               >
                                  {item.text}
                               </p>
@@ -146,7 +144,6 @@ export default function PostTemplate({
             </div>
             <InputComment mode={mode} query={query} postId={id} />
          </section>
-         <div className='h-[1px] sm:hidden flex w-full bg-[hsl(0,0%,80%)]'></div>
       </>
    );
 }

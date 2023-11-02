@@ -52,8 +52,11 @@ const ExplorePage = () => {
    if (isSuccess && data) {
       return (
          <main className={`flex flex-col items-center w-full justify-center`}>
-            <header className='w-full flex justify-center mb-2 border-b border-gray-200'>
-               <h1 className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,10%)]'} font-play text-xl`}>Followings</h1>
+            <header className='flex justify-start mb-10 mt-5 flex-col items-start sm:w-[90%] w-[97%]'>
+               <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} font-russ text-3xl`}>Friends</p>
+               <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} text-sm text-left font-russ font-thin`}>
+                  See all friends you follow.
+               </p>
             </header>
             <section className='sm:w-[90%] w-[97%] mx-auto grid grid-cols-1 gap-4'>
                {isSuccess && data && data.friends.length > 0 ? (
@@ -63,7 +66,7 @@ const ExplorePage = () => {
                            key={index}
                            data-user={item.frndId}
                            className={`flex flex-row items-center w-full p-3 justify-between border ${
-                              mode ? 'bg-[hsl(0,0%,10%)] border-[hsl(0,0%,20%)] text-white' : 'bg-white border border-[#c4c4c4]'
+                              mode ? 'bg-[hsl(0,0%,25%)] border-[hsl(0,0%,20%)] text-white' : 'bg-[#ECECEC] border border-[#c4c4c4]'
                            } rounded-lg`}
                         >
                            <div className='flex flex-row items-center'>
@@ -72,11 +75,13 @@ const ExplorePage = () => {
                                  alt='explore user image'
                                  className='w-10 h-10 rounded-full border border-[#c4c4c4] object-cover'
                               />
-                              <p className='flex justify-start ml-3 font-play capitalize text-base font-semibold'>{item.frndName}</p>
+                              <p className='flex justify-start ml-3 font-kan capitalize text-base font-semibold'>{item.frndName}</p>
                            </div>
-                           <div className='flex flex-row items-center w-auto'>
+                           <div className='flex flex-row items-center sm:w-auto w-1/2'>
                               <button
-                                 className={`${mode ? 'bg-[hsl(0,0%,30%)]' : 'bg-[hsl(0,0%,20%)]'} rounded-lg px-8 flex justify-center`}
+                                 className={`${
+                                    mode ? 'bg-[hsl(0,0%,15%)]' : 'bg-[hsl(0,0%,10%)]'
+                                 } rounded-lg px-4 sm:px-8 flex justify-center`}
                               >
                                  <i
                                     className={`${
@@ -88,11 +93,13 @@ const ExplorePage = () => {
                               </button>
                               <button
                                  className={`${
-                                    mode ? 'bg-[hsl(0,0%,30%)]' : 'bg-[hsl(0,0%,20%)]'
-                                 } rounded-lg px-5 flex justify-center ml-3 py-1`}
+                                    mode ? 'bg-[hsl(0,0%,15%)]' : 'bg-[hsl(0,0%,10%)]'
+                                 } rounded-lg sm:px-5 px-2 flex justify-center ml-3 py-1`}
                                  onClick={() => unFriendMutation.mutate(item.frndId)}
                               >
-                                 <p className={`${mode ? 'text-white' : 'text-white'} font-normal text-sm self-center`}>unfollow</p>
+                                 <p className={`${mode ? 'text-white' : 'text-white'} font-normal text-sm self-center font-kan`}>
+                                    unfollow
+                                 </p>
                               </button>
                            </div>
                         </div>

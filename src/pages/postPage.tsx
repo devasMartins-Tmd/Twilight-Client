@@ -69,17 +69,17 @@ const PostPage = () => {
             </div>
             <textarea
                onChange={(e) => setstate((prev) => ({ ...prev, text: e.target.value }))}
-               className={`font-play font-semibold text-left p-3 text-base border w-full outline-none ${
+               className={`font-kan font-semibold text-left p-3 text-base border w-full outline-none ${
                   mode ? 'border-[#2b2b2b] bg-[#464646] text-[#F7F7F9]' : 'text-[#2B2B2B] border-gray-200 bg-[#FAFAF9]'
                }`}
             />
 
             <div className='flex flex-row items-center w-full justify-between'>
                <div className={`w-2/5 h-auto`}>
-                  <input type={'file'} className='font-play text-base font-medium' placeholder='Image' onChange={(e) => HandleFile(e)} />
+                  <input type={'file'} className='font-kan text-base font-medium' placeholder='Image' onChange={(e) => HandleFile(e)} />
                </div>
 
-               <div className='flex flex-row items-center mt-3 w-2/5 justify-between'>
+               <div className='flex flex-row items-center mt-3 sm:w-[30%] w-2/5 justify-between'>
                   <div className='mr-5 w-auto h-auto' onClick={() => navigate(-1)}>
                      <Button text='Go back' color={mode ? `text-gray-50` : `text-[#191919]`} bg={`bg-green-200 sm:text-base text-xs`} />
                   </div>

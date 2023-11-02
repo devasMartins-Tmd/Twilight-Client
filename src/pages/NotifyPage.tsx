@@ -47,12 +47,15 @@ const NotificationPage = () => {
    if (isLoading) return <Loader on={isLoading} />;
 
    return (
-      <section className='flex flex-col items-center w-full px-3'>
-         <header className='w-full flex justify-center mb-2 border-b border-gray-200'>
-            <h1 className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,10%)]'} font-play text-xl`}>Notifications</h1>
+      <section className='flex flex-col items-center w-full'>
+         <header className='flex justify-start mb-10 mt-5 flex-col items-start sm:w-[90%] w-[95%] sm:mx-0 mx-auto'>
+            <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} font-russ text-3xl text-left`}>Notifications</p>
+            <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} text-sm text-left font-russ font-thin`}>
+               Get notified of action taken.
+            </p>
          </header>
-         <section className='grid grid-cols-1 w-full gap-3'>
-            {data.list.reverse().map((item: any) => {
+         <section className='grid grid-cols-1 gap-3 sm:w-[90%] w-[95%] sm:mx-0 mx-auto'>
+            {data.list.map((item: any) => {
                let div =
                   item.type == 'success' ? (
                      <div
@@ -65,7 +68,7 @@ const NotificationPage = () => {
                            <p
                               className={`${
                                  mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'
-                              } font-open text-sm text-left font-semibold`}
+                              } font-kan text-sm text-left font-semibold`}
                            >
                               {item.text}
                            </p>
@@ -85,7 +88,7 @@ const NotificationPage = () => {
                            <p
                               className={`${
                                  mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'
-                              } font-open text-sm text-left font-semibold`}
+                              } font-kan text-sm text-left font-semibold`}
                            >
                               {item.text}
                            </p>

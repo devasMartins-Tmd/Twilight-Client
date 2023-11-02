@@ -104,29 +104,34 @@ const Setting = () => {
       return mode ? expL : exp;
    }, [mode]);
 
-   let inputClass = `rounded shadow p-3 outline-none font-play w-full ${
+   let inputClass = `rounded shadow p-3 outline-none font-kan  w-full ${
       mode ? 'text-[hsl(0,0%,90%)] bg-[hsl(0,0%,20%)]' : 'text-[hsl(0,0%,20%)] bg-[hsl(0,0%,90%)]'
    }`;
 
    return (
-      <section className='flex flex-col items-start w-full justify-start'>
-         <header className='w-full flex justify-center mb-3 border-b border-gray-200'>
-            <h1 className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,10%)]'} font-play text-xl`}>Settings</h1>
+      <section className='flex flex-col items-start w-full justify-start p-3'>
+         <header className='flex justify-start mb-10 mt-5 flex-col items-start sm:w-[90%] w-[95%] sm:mx-0 mx-auto'>
+            <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} font-russ text-3xl`}>Settings</p>
+            <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} text-sm text-left font-russ font-thin`}>
+               Update your Twilight profile.
+            </p>
          </header>
-         <p className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} text-xl text-left font-medium font-play mb-3 px-4`}>
+         <p className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} text-xl text-left font-medium font-kan  mb-3 px-4`}>
             Public Profile
          </p>
          <div className='flex flex-row items-start w-auto px-4'>
             <img
                src={data?.user.profileImg || Exp}
-               className={`${mode ? 'border-[hsl(0,0%,90%)]' : 'border-[hsl(0,0%,20%)]'} border h-[70px] w-[70px] rounded-full shadow mr-5`}
+               className={`${
+                  mode ? 'border-[hsl(0,0%,90%)]' : 'border-[hsl(0,0%,20%)]'
+               } object-cover border h-[70px] w-[70px] rounded-full shadow mr-5`}
                alt='profileImg'
             />
-            <div className='flex flex-col items-start'>
+            <div className='flex flex-col items-start sm:w-auto w-3/4'>
                <button
                   type='button'
                   disabled={true}
-                  className={`p-2 px-8 font-play text-sm border rounded ${
+                  className={`p-2 px-8 font-kan  text-sm border rounded ${
                      mode ? 'border-[hsl(0,0%,15%)] text-[hsl(0,0%,90%)]' : 'border-[hsl(0,0%,90%)] text-[hsl(0,0%,10%)]'
                   }`}
                >
@@ -135,7 +140,7 @@ const Setting = () => {
                <input
                   onChange={(e) => handleImg(e)}
                   type='file'
-                  className={`p-2 px-7 font-play text-sm rounded mb-3 ${
+                  className={`p-2 px-7 font-kan  text-sm rounded mb-3 w-full ${
                      mode ? 'bg-[hsl(0,0%,15%)] text-[hsl(0,0%,90%)]' : 'bg-[hsl(0,0%,90%)] text-[hsl(0,0%,10%)]'
                   }`}
                />
@@ -144,7 +149,7 @@ const Setting = () => {
          <form className='sm:w-[75%] sm:mx-0 mx-auto w-[93%] flex flex-col mt-5'>
             <div className='grid sm:grid-cols-2 grid-cols-1 w-full gap-3'>
                <div className='flex flex-col items-start justify-start'>
-                  <label htmlFor='Name' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-play`}>
+                  <label htmlFor='Name' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-kan `}>
                      First Name
                   </label>
                   <input
@@ -156,7 +161,7 @@ const Setting = () => {
                   />
                </div>
                <div className='flex flex-col items-start justify-start'>
-                  <label htmlFor='email' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-play`}>
+                  <label htmlFor='email' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-kan `}>
                      Email
                   </label>
                   <input
@@ -170,7 +175,7 @@ const Setting = () => {
                </div>
             </div>
             <div className='flex flex-col items-start justify-start mt-2'>
-               <label htmlFor='password' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-play`}>
+               <label htmlFor='password' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-kan `}>
                   Old Password
                </label>
                <input
@@ -183,7 +188,7 @@ const Setting = () => {
                />
             </div>
             <div className='flex flex-col items-start justify-start mt-3'>
-               <label htmlFor='password' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-play`}>
+               <label htmlFor='password' className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-kan `}>
                   New password
                </label>
                <input
@@ -202,7 +207,7 @@ const Setting = () => {
                      profileMutation.mutate();
                      console.log(info);
                   }}
-                  className={`w-full p-3 text-center font-play text-sm font-semibold rounded ${
+                  className={`w-full p-3 text-center font-kan  text-sm font-semibold rounded ${
                      mode ? 'text-[hsl(0,0%,90%)] bg-[hsl(129,17%,25%)]' : 'text-[hsl(0,0%,100%)] bg-[hsl(130,20%,40%)]'
                   }`}
                >
@@ -211,7 +216,7 @@ const Setting = () => {
             </div>
 
             <button
-               className={`mt-10 mb-2 text-base font-play p-1 border border-[red]  text-[red]
+               className={`mt-10 mb-2 text-base font-kan  p-1 border border-[red]  text-[red]
                `}
             >
                Danger
@@ -219,7 +224,7 @@ const Setting = () => {
             <div className='flex flex-col items-start w-full justify-start mt-3'>
                <label
                   htmlFor='delete_account'
-                  className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-play text-left`}
+                  className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,20%)]'} font-thin font-kan  text-left`}
                >
                   Delete Account
                </label>
@@ -234,7 +239,7 @@ const Setting = () => {
                   <button
                      type='button'
                      onClick={() => deleteMutation.mutate()}
-                     className={`p-4 px-7 font-play text-sm rounded w-full sm:w-[35%] sm:ml-5 sm:mt-0 mt-2 ${
+                     className={`p-4 px-7 font-kan  text-sm rounded w-full sm:w-[35%] sm:ml-5 sm:mt-0 mt-2 ${
                         mode ? 'bg-[hsl(0,36%,25%)] text-[hsl(0,0%,90%)]' : 'bg-[hsl(0,41%,79%)] text-[hsl(0,0%,10%)]'
                      }`}
                   >

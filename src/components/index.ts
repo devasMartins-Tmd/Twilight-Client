@@ -9,6 +9,7 @@ import B015 from '../assets/B015.jpg'; // * * * * * *  *
 export { default as exp } from '../assets/exp.webp';
 export { default as expL } from '../assets/icons8-person-64 (1).webp';
 export { default as empty } from '../assets/empty.png';
+export { default as AuthImg } from '../assets/Auth.png';
 //** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 //* * * * * * * *  * * * * * Export *  * * * * * * * * * * * * * * *
 export { greenhouse as authImg, B015 as profileImg }; //*  * * * * *
@@ -39,7 +40,7 @@ export { default as Switch } from './main/utils/switch/switch'; // * * * * * *
 export { default as Button } from './main/utils/button.tsx'; // * * * * * ** *
 export { default as EmptyField } from './main/utils/empty.tsx'; // * * * * * ** *
 export { default as Loader } from './main/utils/loader/loader.tsx'; // * * * *
-export { default as PostTemplate } from './Feed/0xFeed.tsx'; // * * * *
+export { default as PostTemplate } from './Feed/PostCard.tsx'; // * * * *
 //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * *
 
 //* * * * * * * * * * * * pages Folder * * * * * * * * * * * *  * * * * *

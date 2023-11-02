@@ -76,8 +76,13 @@ export const Main = ({ userId, mode, date, tag, name, id, setEllipse, query, ell
          return A.json();
       },
       mutationKey: ['deleteFriend', 'unFriend'],
-      onSuccess() {
-         updateRef();
+      onSuccess: () => {
+         query.refetch({ queryKey: ['getpost'] });
+         updateRef(`${Math.random() * 292}`);
+      },
+
+      onMutate() {
+         query.refetch({ queryKey: ['getpost'] });
       },
    });
 
@@ -94,13 +99,13 @@ export const Main = ({ userId, mode, date, tag, name, id, setEllipse, query, ell
 
             <div className='flex flex-col items-start place-self-start self-center'>
                <div className='flex flex-row items-center'>
-                  <p className={`${mode ? 'text-slate-100' : 'text-[#191919]'} font-play text-base font-semibold`}>{name}</p>
-                  <p className={`font-play text-xs font-normal ml-3 ${mode ? 'text-slate-100' : 'text-[#191919]'} font-semibold `}>
+                  <p className={`${mode ? 'text-slate-100' : 'text-[#191919]'} font-russ text-base font-semibold`}>{name}</p>
+                  <p className={`font-open text-xs font-normal ml-3 ${mode ? 'text-slate-100' : 'text-[#191919]'} font-semibold `}>
                      {uiTime(new Date(date))}
                   </p>
                </div>
 
-               <small className={`${mode ? 'text-slate-100' : 'text-[#191919]'} font-play text-sm text-opacity-50 font-semibold`}>
+               <small className={`${mode ? 'text-slate-100' : 'text-[#191919]'} font-kan text-sm text-opacity-50 font-semibold`}>
                   {tag}
                </small>
             </div>
@@ -127,7 +132,7 @@ export const Main = ({ userId, mode, date, tag, name, id, setEllipse, query, ell
                >
                   block
                </i>
-               <p className={`${mode ? 'text-white' : 'text-black'} font-play text-base font-medium ml-3`}>Unfollow</p>
+               <p className={`${mode ? 'text-white' : 'text-black'} font-kan text-base font-medium ml-3`}>Unfollow</p>
             </div>
             <div
                className={`flex-row items-center cursor-pointer ${data && userId === data.user._id ? 'flex' : 'hidden'}`}
@@ -141,7 +146,7 @@ export const Main = ({ userId, mode, date, tag, name, id, setEllipse, query, ell
                >
                   delete_forever
                </i>
-               <p className={`${mode ? 'text-white' : 'text-black'} font-play text-base font-medium ml-3`}>Delete</p>
+               <p className={`${mode ? 'text-white' : 'text-black'} font-kan text-base font-medium ml-3`}>Delete</p>
             </div>
          </div>
          <div

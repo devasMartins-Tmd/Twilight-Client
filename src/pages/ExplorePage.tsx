@@ -52,30 +52,35 @@ const ExplorePage = () => {
 
    if (isSuccess && data) {
       return (
-         <main className={`flex flex-col items-center w-full justify-center`}>
-            <header className='w-full flex justify-center mb-2 border-b border-gray-200'>
-               <h1 className={`${mode ? 'text-[hsl(0,0%,90%)]' : 'text-[hsl(0,0%,10%)]'} font-play text-xl`}>Explore users</h1>
-            </header>{' '}
+         <main className={`flex flex-col items-center w-full justify-center p-3`}>
+            <header className='flex justify-start mb-10 mt-5 flex-col items-start sm:w-[90%] w-[97%]'>
+               <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} font-russ text-3xl`}>Explore</p>
+               <p className={`${mode ? 'text-[hsl(0,0%,100%)]' : 'text-[hsl(0,0%,1%)]'} text-sm text-left font-russ font-thin`}>
+                  Explore and discover friends.
+               </p>
+            </header>
             <section className='sm:w-[90%] w-[97%] mx-auto grid grid-cols-1 gap-4'>
                {isSuccess && data && data.explore.length > 0 ? (
                   data?.explore.map((item: { name: string; profileImg: string; tag: string; _id: string }, index: number) => {
                      return (
                         <div
                            key={index}
-                           className={`flex flex-row items-center w-full p-3 justify-between border ${
-                              mode ? 'bg-[hsl(0,0%,10%)] border-[hsl(0,0%,20%)] text-white' : 'bg-white border border-[#c4c4c4]'
+                           className={`flex flex-row items-center w-full p-3 justify-between ${
+                              mode ? 'bg-[hsl(0,0%,25%)]' : 'bg-[#ECECEC]'
                            } rounded-lg`}
                         >
                            <div className='flex flex-row items-center'>
                               <img
                                  src={item.profileImg || Exp}
                                  alt='explore user image'
-                                 className='w-10 h-10 rounded-full border border-[#c4c4c4] object-cover'
+                                 className='w-12 h-12 rounded-full border border-[#c4c4c4] object-cover'
                               />
-                              <p className='flex justify-start ml-3 font-open capitalize text-base font-semibold'>{item.name}</p>
+                              <p className={`flex justify-start ml-3 font-russ capitalize text-lg ${mode ? 'text-white' : 'text-black'}`}>
+                                 {item.name}
+                              </p>
                            </div>
                            <button
-                              className={`${mode ? 'bg-[hsl(0,0%,30%)]' : 'bg-[hsl(0,0%,20%)]'} rounded-lg px-8 flex justify-center`}
+                              className={`${mode ? 'bg-[hsl(0,0%,10%)]' : 'bg-[hsl(0,0%,20%)]'} rounded-lg px-7 flex justify-center`}
                               onClick={() => mutation.mutate(item._id)}
                            >
                               <i className={`${mode ? 'text-white' : 'text-white'} font-thin text-xl self-center material-icons-outlined`}>
